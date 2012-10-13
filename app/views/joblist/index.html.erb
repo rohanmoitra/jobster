@@ -1,0 +1,34 @@
+<h1 align="center">Jobster</h1>
+<h5 align="center"> "your job search ends here" </h5>
+
+
+
+<div>
+  <h5 align="center"> Job Listings </h5>
+  <table align="center">
+    <tr>
+      <th>Job ID</th>
+      <th>Job Title</th>
+      <th>Description</th>
+      <th>Company</th>
+      <th>About</th>
+      <th>Salary</th>
+      <th>Location</th>
+    </tr>
+  <% @jobs.each do |job|%>
+    <tr>
+      <td align="center"> <%=  job.id%> </td>
+      <td align="center"> <%=  job.title %></td>
+      <td align="center"> <%=  truncate(strip_tags(job.description),:length=>10)%> <%= link_to '..', job_path(job)%> </td>
+      <td align="center"> <%=  job.company_name%> </td>
+      <td align="center"> <%=  truncate(strip_tags(job.company_info),:length=>10)%> <%= link_to '..', job_path(job)  %> </td>
+      <td align="center"> <%=  job.salary%> </td>
+      <td align="center"> <%=  job.location%> </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+
+
+
