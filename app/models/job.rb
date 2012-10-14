@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
 
 def self.search(search)
     if search
-      where('LOWER(title) LIKE ? OR LOWER(description) LIKE ? OR LOWER(location) LIKE ?', "%#{search.downcase}%","%#{search.downcase}%","%#{search.downcase}%") if search.present?
+      where('LOWER(title) LIKE ? OR LOWER(location) LIKE ? OR LOWER(salary) LIKE ?', "%#{search.downcase}%","%#{search.downcase}%","%#{search.downcase}%") if search.present?
     else
       all
     end
