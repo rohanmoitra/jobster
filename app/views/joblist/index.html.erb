@@ -15,7 +15,7 @@
   <body>
 
    
-
+    <h5 align="left"> <%=link_to 'Admin Login', jobs_url %> </h5>
     <h1 align="center">Jobster</h1>
     <h5 align="center"> "your job search ends here" </h5>
 
@@ -47,8 +47,6 @@
       <% end %>
       </table>
        
-
-      <h5 align="right"> <%=link_to 'Admin Login', jobs_url %> </h5>
 
       <div id="search" align="center">
         <%= form_tag url_for(:controller => 'joblist', :action => 'index'), :method => 'get' do %>
