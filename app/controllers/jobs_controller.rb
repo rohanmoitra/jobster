@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
+  skip_before_filter :authorize, :only => [:show]
+  
   def index
     @jobs = Job.all
 

@@ -5,6 +5,7 @@
 
 <div>
   <h5 align="center"> Job Listings </h5>
+
   <table align="center">
     <tr>
       <th>Job ID</th>
@@ -18,7 +19,7 @@
   <% @jobs.each do |job|%>
     <tr>
       <td align="center"> <%=  job.id%> </td>
-      <td align="center"> <%=  job.title %></td>
+      <td align="left"> <%=  job.title %></td>
       <td align="center"> <%=  truncate(strip_tags(job.description),:length=>10)%> <%= link_to '..', job_path(job)%> </td>
       <td align="center"> <%=  job.company_name%> </td>
       <td align="center"> <%=  truncate(strip_tags(job.company_info),:length=>10)%> <%= link_to '..', job_path(job)  %> </td>
@@ -29,6 +30,25 @@
   </table>
 
   <h5 align="right"> <%=link_to 'Admin Login', jobs_url %> </h5>
+
+  <div id="search" align="center">
+    <%= form_tag url_for(:controller => 'joblist', :action => 'index'), :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+  <% if (@search_results.present?)%>
+  <%  @search_results.each do |result| %>
+    <%= result.id %>
+    <%= result.title %>
+    <%= link_to 'Learn more', job_path(result.id) %>
+    <br/>
+  <% end %>
+  <% end %>
+  </div>
+
 </div>
 
 
